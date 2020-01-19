@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyCashModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ms_Profiles">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="NIK" Type="varchar" MaxLength="16" />
+    <Property Name="NIK_Photo" Type="varchar" MaxLength="50" />
+    <Property Name="No_Rekening" Type="varchar" MaxLength="25" />
+    <Property Name="Nama_Rekening" Type="varchar" MaxLength="100" />
+    <Property Name="Bank" Type="varchar" MaxLength="25" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Phone" Type="varchar" MaxLength="16" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Verified" Type="bit" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="LoginTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ms_Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserType" Type="varchar" MaxLength="25" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="DeleteDate" Type="datetime" />
+    <Property Name="DeleteBy" Type="varchar" MaxLength="15" />
+    <Property Name="Dlt" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Ms_Profiles_Ms_Users">
+    <End Role="Ms_Users" Type="Self.Ms_Users" Multiplicity="1" />
+    <End Role="Ms_Profiles" Type="Self.Ms_Profiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ms_Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Ms_Profiles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyCashModelStoreContainer">
+    <EntitySet Name="Ms_Profiles" EntityType="Self.Ms_Profiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ms_Users" EntityType="Self.Ms_Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ms_Profiles_Ms_Users" Association="Self.FK_Ms_Profiles_Ms_Users">
+      <End Role="Ms_Users" EntitySet="Ms_Users" />
+      <End Role="Ms_Profiles" EntitySet="Ms_Profiles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

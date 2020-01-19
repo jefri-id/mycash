@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyCashModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ms_Profiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="NIK" Type="varchar" MaxLength="16" />
+          <Property Name="NIK_Photo" Type="varchar" MaxLength="50" />
+          <Property Name="No_Rekening" Type="varchar" MaxLength="25" />
+          <Property Name="Nama_Rekening" Type="varchar" MaxLength="100" />
+          <Property Name="Bank" Type="varchar" MaxLength="25" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="16" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Verified" Type="bit" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="LoginTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ms_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="varchar" MaxLength="15" />
+          <Property Name="Dlt" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Ms_Profiles_Ms_Users">
+          <End Role="Ms_Users" Type="Self.Ms_Users" Multiplicity="1" />
+          <End Role="Ms_Profiles" Type="Self.Ms_Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ms_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Ms_Profiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyCashModelStoreContainer">
+          <EntitySet Name="Ms_Profiles" EntityType="Self.Ms_Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ms_Users" EntityType="Self.Ms_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ms_Profiles_Ms_Users" Association="Self.FK_Ms_Profiles_Ms_Users">
+            <End Role="Ms_Users" EntitySet="Ms_Users" />
+            <End Role="Ms_Profiles" EntitySet="Ms_Profiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyCashModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyCashEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ms_Profiles" EntityType="MyCashModel.Ms_Profiles" />
+          <EntitySet Name="Ms_Users" EntityType="MyCashModel.Ms_Users" />
+          <AssociationSet Name="FK_Ms_Profiles_Ms_Users" Association="MyCashModel.FK_Ms_Profiles_Ms_Users">
+            <End Role="Ms_Users" EntitySet="Ms_Users" />
+            <End Role="Ms_Profiles" EntitySet="Ms_Profiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ms_Profiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="NIK_Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="No_Rekening" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Nama_Rekening" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Verified" Type="Boolean" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ms_Users" Relationship="MyCashModel.FK_Ms_Profiles_Ms_Users" FromRole="Ms_Profiles" ToRole="Ms_Users" />
+        </EntityType>
+        <EntityType Name="Ms_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Dlt" Type="Boolean" />
+          <NavigationProperty Name="Ms_Profiles" Relationship="MyCashModel.FK_Ms_Profiles_Ms_Users" FromRole="Ms_Users" ToRole="Ms_Profiles" />
+        </EntityType>
+        <Association Name="FK_Ms_Profiles_Ms_Users">
+          <End Type="MyCashModel.Ms_Users" Role="Ms_Users" Multiplicity="1" />
+          <End Type="MyCashModel.Ms_Profiles" Role="Ms_Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ms_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Ms_Profiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyCashModelStoreContainer" CdmEntityContainer="MyCashEntities">
+          <EntitySetMapping Name="Ms_Profiles">
+            <EntityTypeMapping TypeName="MyCashModel.Ms_Profiles">
+              <MappingFragment StoreEntitySet="Ms_Profiles">
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Nama_Rekening" ColumnName="Nama_Rekening" />
+                <ScalarProperty Name="No_Rekening" ColumnName="No_Rekening" />
+                <ScalarProperty Name="NIK_Photo" ColumnName="NIK_Photo" />
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ms_Users">
+            <EntityTypeMapping TypeName="MyCashModel.Ms_Users">
+              <MappingFragment StoreEntitySet="Ms_Users">
+                <ScalarProperty Name="Dlt" ColumnName="Dlt" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
