@@ -1,8 +1,8 @@
 # ignore a single file
-mycode.class
 
 # ignore an entire directory
-/mydebugdir/
+/bin
+/obj/Debug
 
 # ignore a file type
 *.json
