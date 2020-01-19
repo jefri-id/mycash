@@ -87,4 +87,3 @@ D:\MyCash\bin\Microsoft.AspNet.Identity.Core.dll
 D:\MyCash\bin\EntityFramework.xml
 D:\MyCash\bin\EntityFramework.SqlServer.xml
 D:\MyCash\bin\Microsoft.AspNet.Identity.Core.xml
-D:\MyCash\obj\Debug\MyCash.csprojAssemblyReference.cache
