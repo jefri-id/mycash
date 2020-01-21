@@ -84,7 +84,6 @@ D:\MyCash\bin\System.Web.WebPages.Deployment.xml
 D:\MyCash\bin\System.Web.WebPages.Razor.xml
 D:\MyCash\bin\Antlr3.Runtime.pdb
 D:\MyCash\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\MyCash\obj\Release\MyCash.csprojAssemblyReference.cache
 D:\MyCash\obj\Release\MyCash.csproj.CopyComplete
 D:\MyCash\obj\Release\MyCash.dll
 D:\MyCash\obj\Release\MyCash.pdb

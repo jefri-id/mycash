@@ -16,7 +16,7 @@
     <Property Name="Phone" Type="varchar" MaxLength="16" />
     <Property Name="BirthDate" Type="datetime" />
     <Property Name="Verified" Type="bit" />
-    <Property Name="UpdatedTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
     <Property Name="LoginTime" Type="datetime" />
   </EntityType>
   <EntityType Name="Ms_Users">
@@ -27,10 +27,10 @@
     <Property Name="UserType" Type="varchar" MaxLength="25" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Password" Type="varchar" MaxLength="255" />
-    <Property Name="CreatedDate" Type="datetime" />
-    <Property Name="UpdatedDate" Type="datetime" />
-    <Property Name="DeletedDate" Type="datetime" />
-    <Property Name="DeletedBy" Type="varchar" MaxLength="15" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="DeleteDate" Type="datetime" />
+    <Property Name="DeleteBy" Type="varchar" MaxLength="15" />
     <Property Name="Dlt" Type="bit" />
   </EntityType>
   <Association Name="FK_Ms_Profiles_Ms_Users">

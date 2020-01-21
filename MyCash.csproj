@@ -193,6 +193,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyCash.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProfilesViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -243,7 +244,7 @@
     <Content Include="Models\MyCash.edmx.diagram">
       <DependentUpon>MyCash.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\MyCash.pubxml" />
+    <None Include="Properties\PublishProfiles\mycash.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
